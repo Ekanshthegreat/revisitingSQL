@@ -39,3 +39,23 @@ ORDER BY column1, column2, ... ASC|DESC;
 
 #
 Use AND to add conditions
+
+INSERT INTO table_name
+VALUES (value1, value2, value3, ...);
+The CustomerID column is an auto-increment field and will be generated automatically when a new record is inserted into the table.
+
+A field with a NULL value is one that has been left blank during record creation.
+
+
+SELECT column_names
+FROM table_name
+WHERE column_name IS NULL;
+
+
+UPDATE table_name
+SET column1 = value1, column2 = value2, ...
+WHERE condition;
+
+
+DELETE FROM table_name WHERE condition;
+
