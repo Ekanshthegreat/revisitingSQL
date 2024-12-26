@@ -59,3 +59,40 @@ WHERE condition;
 
 DELETE FROM table_name WHERE condition;
 
+To remove the whole table:
+DROP TABLE Customers;
+
+SELECT TOP 3 * FROM Customers;
+SELECT TOP 50 PERCENT * FROM Customers;
+c
+SELECT MAX(column_name)
+FROM table_name
+WHERE condition;
+
+
+SELECT MIN(Price) AS SmallestPrice, CategoryID
+FROM Products
+GROUP BY CategoryID; 
+
+
+
+SELECT COUNT(*) AS [Number of records]
+FROM Products;
+
+Name the column "Number of records":
+
+
+The LIKE operator is used in a WHERE clause to search for a specified pattern in a column.
+
+There are two wildcards often used in conjunction with the LIKE operator:
+
+ The percent sign % represents zero, one, or multiple characters
+ The underscore sign _ represents one, single character
+
+
+ %	Represents zero or more characters
+_	Represents a single character
+[]	Represents any single character within the brackets *
+^	Represents any character not in the brackets *
+-	Represents any single character within the specified range *
+{}	Represents any escaped character **
