@@ -96,3 +96,117 @@ _	Represents a single character
 ^	Represents any character not in the brackets *
 -	Represents any single character within the specified range *
 {}	Represents any escaped character **
+
+Different Types of SQL JOINs
+Here are the different types of the JOINs in SQL:
+
+(INNER) JOIN: Returns records that have matching values in both tables
+LEFT (OUTER) JOIN: Returns all records from the left table, and the matched records from the right table
+RIGHT (OUTER) JOIN: Returns all records from the right table, and the matched records from the left table
+FULL (OUTER) JOIN: Returns all records when there is a match in either left or right table
+
+#
+SELECT Products.ProductID, Products.ProductName, Categories.CategoryName
+FROM Products
+INNER JOIN Categories ON Products.CategoryID = Categories.CategoryID
+
+#
+SELECT column_name(s)
+FROM table_name
+WHERE condition
+GROUP BY column_name(s)
+ORDER BY column_name(s);
+
+eg. The following SQL statement lists the number of customers in each country:
+
+SELECT COUNT(CustomerID), Country
+FROM Customers
+GROUP BY Country;
+
+The INSERT INTO SELECT statement copies data from one table and inserts it into another table.
+
+The INSERT INTO SELECT statement requires that the data types in source and target tables match.
+
+
+Example
+Copy only the German suppliers into "Customers":
+
+INSERT INTO Customers (CustomerName, City, Country)
+SELECT SupplierName, City, Country FROM Suppliers
+WHERE Country='Germany';
+
+
+
+The following SQL goes through conditions and returns a value when the first condition is met:
+
+ExampleGet your own SQL Server
+SELECT OrderID, Quantity,
+CASE
+    WHEN Quantity > 30 THEN 'The quantity is greater than 30'
+    WHEN Quantity = 30 THEN 'The quantity is 30'
+    ELSE 'The quantity is under 30'
+END AS QuantityText
+FROM OrderDetails;
+
+
+
+The following SQL will order the customers by City. However, if City is NULL, then order by Country:
+
+Example
+SELECT CustomerName, City, Country
+FROM Customers
+ORDER BY
+(CASE
+    WHEN City IS NULL THEN Country
+    ELSE City
+END);
+
+
+
+What is a Stored Procedure?
+A stored procedure is a prepared SQL code that you can save, so the code can be reused over and over again.
+
+So if you have an SQL query that you write over and over again, save it as a stored procedure, and then just call it to execute it.
+
+You can also pass parameters to a stored procedure, so that the stored procedure can act based on the parameter value(s) that is passed.
+
+Stored Procedure Syntax: 
+
+CREATE PROCEDURE procedure_name
+AS sql_statement
+GO;
+Execute a Stored Procedure
+EXEC procedure_name;
+
+
+
+
+CREATE DATABASE testDB;
+DROP DATABASE testDB;
+
+
+CREATE TABLE Persons (
+    PersonID int,
+    LastName varchar(255),
+    FirstName varchar(255),
+    Address varchar(255),
+    City varchar(255)
+);
+
+
+CREATE TABLE TestTable AS
+SELECT customername, contactname
+FROM customers;
+
+The TRUNCATE TABLE statement is used to delete the data inside a table, but not the table itself:  TRUNCATE TABLE table_name;
+
+
+
+NOT NULL - Ensures that a column cannot have a NULL value
+UNIQUE - Ensures that all values in a column are different
+PRIMARY KEY - A combination of a NOT NULL and UNIQUE. Uniquely identifies each row in a table
+FOREIGN KEY - Prevents actions that would destroy links between tables
+CHECK - Ensures that the values in a column satisfies a specific condition
+DEFAULT - Sets a default value for a column if no value is specified
+CREATE INDEX - Used to create and retrieve data from the database very quickly
+
